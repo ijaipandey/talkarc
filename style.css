@@ -63,7 +63,7 @@ footer{background:var(--alt);padding:34px 22px;text-align:center;color:var(--mut
 .hero img.mark{animation:bob 4s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-8px)}}
 .float{position:absolute;background:rgba(255,255,255,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.8);box-shadow:0 12px 40px rgba(79,70,229,.15);padding:10px 18px;border-radius:20px;font-size:15px;animation:bob 5s ease-in-out infinite}
-.f1{left:-30px;top:70px}.f2{right:-20px;top:150px;background:var(--acc);color:#fff;animation-delay:-2s}.f3{left:30px;bottom:-20px;animation-delay:-3s}
+.f1{left:-30px;top:70px}.f2{right:60px;top:-10px;background:var(--acc);color:#fff;animation-delay:-2s}.f3{left:30px;bottom:-20px;animation-delay:-3s}
 .card{border:1px solid rgba(0,0,0,.04);transition:transform .4s,box-shadow .4s}
 .card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(79,70,229,.14)}
 .num{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;background:linear-gradient(135deg,#4f46e5,#06b6d4);color:#fff;border-radius:50%;font-size:14px}

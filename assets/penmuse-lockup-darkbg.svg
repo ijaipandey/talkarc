@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="160" viewBox="0 0 740 160">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+<g transform="translate(12 9) scale(1.268)">
+<path d="M50 110 L38.5 96.5 C22 80.5 14 61 20 39 L28 14 C30 6 36 3 50 3 C64 3 70 6 72 14 L80 39 C86 61 78 80.5 61.5 96.5 Z" fill="url(#g)"/>
+<path d="M50 106 C49.5 96 49.2 82 49.0 66 L51.0 66 C50.8 82 50.5 96 50 106 Z" fill="#FFFFFF"/>
+<path d="M50 28 C50.9 35.5 53 40.5 63 44 C53 47.5 50.9 52.5 50 60 C49.1 52.5 47 47.5 37 44 C47 40.5 49.1 35.5 50 28 Z" fill="#F59E0B"/>
+</g>
+<text x="158" y="104" font-family="Space Grotesk, Inter, sans-serif" font-weight="700" font-size="86" letter-spacing="-1.5" fill="#FFFFFF">PenMuse</text>
+</svg>

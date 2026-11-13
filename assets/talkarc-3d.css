@@ -5,3 +5,21 @@
 @media(prefers-reduced-motion:reduce){.motion-ready [data-reveal]{opacity:1;transform:none;transition:none}.hero-business-card,.sample-chat,.talkarc-full-lockup,.disc-one,.disc-two,.depth-ring,.floating-reply{animation:none!important;translate:none!important}.talkarc-service-grid article,.plan-card,.talkarc-logo-large,.agency-process li{transition:none!important}.talkarc-service-grid article:hover,.plan-card:hover,.talkarc-logo-large:hover,.agency-process li:hover{transform:none!important}.talkarc-site [data-tilt]{transform:none!important}}
 .motion-ready [data-reveal]{opacity:1}
 @media(max-width:980px){.talkarc-hero{grid-template-columns:1fr}.talkarc-hero-art{max-width:650px;width:100%;margin:auto}}
+.talkarc-site.motion-ready .agency-nav{transform-origin:50% 0;animation:nav-arrive .8s cubic-bezier(.2,.8,.2,1) both}
+.talkarc-site.motion-ready .talkarc-brand{transform-origin:left center;animation:brand-arrive .8s .12s cubic-bezier(.2,.8,.2,1) both}
+.talkarc-site.motion-ready .hero-business-card{animation:card-arrive .95s .12s cubic-bezier(.2,.8,.2,1) both,talkarc-card-float 6s 1.1s ease-in-out infinite}
+.talkarc-site.motion-ready .sample-chat{animation:overlay-arrive .8s .55s cubic-bezier(.2,.8,.2,1) both,chat-float 4.6s 1.35s ease-in-out infinite}
+.talkarc-site.motion-ready .talkarc-full-lockup{animation:overlay-arrive .9s .35s cubic-bezier(.2,.8,.2,1) both,logo-float 5.4s 1.25s ease-in-out infinite}
+.talkarc-site.motion-ready .floating-reply{animation:overlay-arrive .75s .7s cubic-bezier(.2,.8,.2,1) both,reply-float 4.8s 1.45s ease-in-out infinite}
+.talkarc-site.motion-ready .disc-one{animation:sphere-arrive .9s .1s cubic-bezier(.2,.8,.2,1) both,sphere-float 7.5s 1.1s ease-in-out infinite}
+.talkarc-site.motion-ready .disc-two{animation:sphere-arrive .85s .35s cubic-bezier(.2,.8,.2,1) both,sphere-float 5.7s 1.25s ease-in-out infinite reverse}
+.talkarc-site.motion-ready .depth-ring{animation:ring-arrive 1.1s .1s cubic-bezier(.2,.8,.2,1) both,ring-orbit 16s 1.2s linear infinite}
+.talkarc-site .agency-nav-cta,.talkarc-site .button-primary{transform:translateZ(0);transition:transform .25s,box-shadow .25s}
+.talkarc-site .agency-nav-cta:hover,.talkarc-site .button-primary:hover{transform:translateY(-3px) translateZ(12px);box-shadow:0 12px 24px #5146e533}
+@keyframes nav-arrive{from{opacity:0;transform:perspective(900px) rotateX(-18deg) translateY(-18px)}to{opacity:1;transform:perspective(900px) rotateX(0) translateY(0)}}
+@keyframes brand-arrive{from{opacity:0;transform:translateY(9px) rotateY(25deg) scale(.9)}to{opacity:1;transform:translateY(0) rotateY(0) scale(1)}}
+@keyframes card-arrive{from{opacity:0;transform:translate3d(90px,32px,-90px) rotateX(12deg) rotateY(-25deg) scale(.88)}to{opacity:1;transform:translate3d(20px,-8px,42px) rotateX(var(--tilt-x,-4deg)) rotateY(var(--tilt-y,-10deg)) rotateZ(1deg) scale(1)}}
+@keyframes overlay-arrive{from{opacity:0;filter:blur(5px);scale:.82}to{opacity:1;filter:blur(0);scale:1}}
+@keyframes sphere-arrive{from{opacity:0;scale:.65}to{opacity:1;scale:1}}
+@keyframes ring-arrive{from{opacity:0;scale:.65;rotate:-22deg}to{opacity:1;scale:1;rotate:0deg}}
+@media(prefers-reduced-motion:reduce){.talkarc-site.motion-ready .agency-nav,.talkarc-site.motion-ready .talkarc-brand,.talkarc-site.motion-ready .hero-business-card,.talkarc-site.motion-ready .sample-chat,.talkarc-site.motion-ready .talkarc-full-lockup,.talkarc-site.motion-ready .floating-reply,.talkarc-site.motion-ready .disc-one,.talkarc-site.motion-ready .disc-two,.talkarc-site.motion-ready .depth-ring{animation:none!important;opacity:1;filter:none}}

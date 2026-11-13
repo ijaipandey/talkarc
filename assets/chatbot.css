@@ -1,0 +1,60 @@
+/* PenMuse AI chatbot */
+.pm-ai-fab { position: fixed; right: 18px; bottom: 88px; z-index: 9990; width: 56px; height: 56px; border-radius: 50%; border: 0; cursor: pointer; background: #0071e3; box-shadow: 0 6px 24px rgba(0,113,227,.35); display: flex; align-items: center; justify-content: center; transition: transform .15s ease; }
+.pm-ai-fab:hover { transform: scale(1.06); }
+.pm-ai-fab img { width: 30px; height: 30px; }
+.pm-ai-fab .pm-ai-dot { position: absolute; top: -2px; right: -2px; width: 14px; height: 14px; border-radius: 50%; background: #F59E0B; border: 2px solid #0F1222; }
+
+.pm-ai-panel { position: fixed; right: 18px; bottom: 156px; z-index: 9991; width: 380px; max-width: calc(100vw - 24px); height: 560px; max-height: calc(100vh - 190px); background: #151936; border: 1px solid rgba(139,124,246,.25); border-radius: 18px; box-shadow: 0 18px 60px rgba(0,0,0,.55); display: none; flex-direction: column; overflow: hidden; }
+.pm-ai-panel.open { display: flex; }
+.pm-ai-panel.max { right: 0; bottom: 0; width: 100vw; max-width: 100vw; height: 100vh; max-height: 100vh; border-radius: 0; }
+.pm-ai-panel.min .pm-ai-body, .pm-ai-panel.min .pm-ai-inputbar, .pm-ai-panel.min .pm-ai-sugg { display: none; }
+.pm-ai-panel.min { height: auto; }
+
+.pm-ai-head { display: flex; align-items: center; gap: 6px; padding: 10px 12px; flex-wrap: nowrap; overflow: hidden; background: linear-gradient(135deg, rgba(79,70,229,.25), rgba(124,58,237,.18)); border-bottom: 1px solid rgba(139,124,246,.2); }
+.pm-ai-head img { width: 26px; height: 26px; }
+.pm-ai-head .pm-ai-title { font-weight: 700; font-size: .92rem; color: #EDEAFF; flex: 1 1 auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.pm-ai-head .pm-ai-status { font-size: .64rem; padding: 2px 7px; flex: 0 0 auto; border-radius: 99px; background: rgba(245,158,11,.15); color: #FBBF24; border: 1px solid rgba(245,158,11,.35); white-space: nowrap; }
+.pm-ai-head button { background: none; border: 0; color: #A5A8C7; cursor: pointer; font-size: .95rem; padding: 4px 5px; border-radius: 8px; line-height: 1; flex: 0 0 auto; }
+.pm-ai-head button:hover { background: rgba(139,124,246,.15); color: #fff; }
+
+.pm-ai-body { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.pm-ai-msg { max-width: 86%; padding: 10px 13px; border-radius: 14px; font-size: .88rem; line-height: 1.45; white-space: pre-wrap; word-break: break-word; }
+.pm-ai-msg.user { align-self: flex-end; background: #0071e3; color: #fff; border-bottom-right-radius: 4px; }
+.pm-ai-msg.assistant { align-self: flex-start; background: rgba(139,124,246,.12); border: 1px solid rgba(139,124,246,.22); color: #DCD9F5; border-bottom-left-radius: 4px; }
+.pm-ai-msg .pm-ai-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.pm-ai-msg .pm-ai-actions button { font-size: .68rem; white-space: nowrap; background: rgba(139,124,246,.15); border: 1px solid rgba(139,124,246,.3); color: #C4B5FD; padding: 3px 8px; border-radius: 8px; cursor: pointer; }
+.pm-ai-msg .pm-ai-actions button:hover { background: rgba(139,124,246,.3); }
+.pm-ai-typing { align-self: flex-start; color: #A5A8C7; font-size: .8rem; padding: 6px 4px; display: none; }
+.pm-ai-typing.on { display: block; }
+.pm-ai-typing span { animation: pmaiblink 1.2s infinite; }
+.pm-ai-typing span:nth-child(2) { animation-delay: .2s; } .pm-ai-typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes pmaiblink { 0%,80%,100% { opacity: .2; } 40% { opacity: 1; } }
+
+.pm-ai-sugg { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 12px; max-height: 76px; overflow-y: auto; border-top: 1px solid rgba(139,124,246,.15); }
+.pm-ai-sugg button { flex: 0 0 auto; font-size: .74rem; background: rgba(139,124,246,.1); border: 1px solid rgba(139,124,246,.25); color: #C4B5FD; padding: 5px 10px; border-radius: 99px; cursor: pointer; white-space: nowrap; }
+.pm-ai-sugg button:hover { background: rgba(139,124,246,.25); }
+
+.pm-ai-inputbar { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid rgba(139,124,246,.15); }
+.pm-ai-inputbar textarea { flex: 1; resize: none; height: 40px; background: rgba(15,18,34,.7); border: 1px solid rgba(139,124,246,.3); border-radius: 10px; color: #EDEAFF; padding: 9px 11px; font-size: .88rem; font-family: inherit; }
+.pm-ai-inputbar textarea:focus { outline: none; border-color: #0071e3; }
+.pm-ai-inputbar .pm-ai-send { background: #0071e3; border: 0; color: #fff; border-radius: 10px; padding: 0 16px; cursor: pointer; font-weight: 600; }
+
+.pm-ai-settings { padding: 12px 14px; overflow-y: auto; display: none; flex-direction: column; gap: 8px; flex: 1; }
+.pm-ai-settings.on { display: flex; }
+.pm-ai-settings label { font-size: .72rem; color: #A5A8C7; text-transform: uppercase; letter-spacing: .06em; }
+.pm-ai-settings input { background: rgba(15,18,34,.7); border: 1px solid rgba(139,124,246,.3); border-radius: 8px; color: #EDEAFF; padding: 8px 10px; font-size: .85rem; }
+.pm-ai-settings .pm-ai-save { margin-top: 6px; background: #0071e3; border: 0; color: #fff; border-radius: 10px; padding: 9px; cursor: pointer; font-weight: 600; }
+
+@media (max-width: 480px) {
+  .pm-ai-panel { right: 8px; bottom: 148px; left: 8px; width: auto; height: 62vh; }
+}
+
+/* hide secondary controls on very narrow screens, keep close/min/max */
+@media (max-width: 380px) {
+  .pm-ai-head button[data-act="new"], .pm-ai-head button[data-act="clear"] { display: none; }
+}
+
+/* Save acknowledgements must remain visible even when settings are open. */
+.pm-ai-sync { color: #C4B5FD; font-size: .75rem; line-height: 1.4; padding: 8px 12px; border-bottom: 1px solid rgba(139,124,246,.2); }
+.pm-ai-sync:empty { display: none; }
+.pm-ai-sync.error { color: #FDE68A; background: rgba(245,158,11,.08); }

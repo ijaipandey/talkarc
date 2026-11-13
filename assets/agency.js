@@ -44,6 +44,36 @@
     $('#downloadWebsite').disabled = false;
     $('#previewStatus').textContent = status || (data.businessName + ' · website draft');
   }
+  const examplePrompt = 'Create a warm website for Luna Salon in Bengaluru. We offer haircuts, colour, and bridal styling. Call +91 98765 43210.';
+  $('#fillExample').addEventListener('click', () => { $('#websitePrompt').value = examplePrompt; $('#promptStatus').textContent = 'Example added. Select “Create my website” to make the draft.'; $('#websitePrompt').focus(); });
+  $('#promptForm').addEventListener('submit', event => {
+    event.preventDefault();
+    const prompt = $('#websitePrompt').value.trim();
+    const nameMatch = prompt.match(/\b(?:for|called|named)\s+["“]?(.+?)["”]?(?=\s+(?:in|near|based\s+in|located\s+in|offering|with|that|which|we\s+offer|we\s+provide)\b|[,.;!?]|$)/i)
+      || prompt.match(/^\s*(?:create|build|make)\s+(?:a|an|the)?\s*(?:\w+\s+){0,3}?(?:website|site)\s+(?:for|of)\s+(.+?)(?=\s+(?:in|near|offering|with)\b|[,.;!?]|$)/i);
+    const businessName = nameMatch && nameMatch[1].replace(/^["“']|["”']$/g, '').trim();
+    if (!businessName) { $('#promptStatus').textContent = 'Add the business name, for example: “website for Luna Salon in Bengaluru”.'; $('#websitePrompt').focus(); return; }
+    const lower = prompt.toLowerCase();
+    const type = /salon|beauty|stylist|haircut/.test(lower) ? 'Salon or beauty studio'
+      : /cafe|café|restaurant|bakery|coffee/.test(lower) ? 'Café or restaurant'
+      : /shop|store|boutique|maker/.test(lower) ? 'Shop or local maker'
+      : /electrician|plumb|cleaning|repair|home service/.test(lower) ? 'Home service'
+      : /gym|yoga|fitness|wellness|trainer/.test(lower) ? 'Fitness or wellness' : 'Other local business';
+    let area = (prompt.match(/\b(?:in|near|based\s+in|located\s+in|serving)\s+([^,.!?;\n]+)/i) || [,''])[1].trim();
+    area = area.replace(/\s+(?:offering|offers|with|we\s+offer|we\s+provide|and\s+we\s+offer)\b.*$/i, '').trim();
+    const phone = (prompt.match(/\+?\d[\d\s().-]{7,18}\d/) || [''])[0].trim();
+    const email = (prompt.match(/[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}/) || [''])[0];
+    const serviceMatch = prompt.match(/\b(?:offering|offers|services(?:\s+include)?|provide|provides|providing|we\s+(?:offer|provide|do)|speciali[sz]ing\s+in)\s+(.+?)(?=[.!?;\n]|$)/i);
+    const services = serviceMatch ? serviceMatch[1].split(/,|\band\b|&|\//i).map(item => item.trim()).filter(Boolean).slice(0, 12) : [];
+    const intro = 'A local ' + type.toLowerCase() + (area ? ' in ' + area : '') + (services.length ? ' offering ' + services.join(', ') : '') + '.';
+    const fields = { businessName, businessType: type, businessArea: area, businessIntro: intro, businessServices: services.join('\n'), businessPhone: phone, businessEmail: email,
+      businessAddress: '', businessAction: phone ? 'call' : email ? 'email' : 'visit',
+      businessLook: /clean|minimal|modern/.test(lower) ? 'clean' : /bold|playful|vibrant|energetic/.test(lower) ? 'bold' : 'warm' };
+    for (const [key, value] of Object.entries(fields)) { const field = $('#clientBrief').elements.namedItem(key); if (field) field.value = value; }
+    renderSite(formData(), businessName + ' · prompt website draft');
+    $('#promptStatus').textContent = 'Draft created from your prompt. Review and edit the details before download.';
+    $('#previewFrameWrap').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
   $('#clientBrief').addEventListener('submit', event => { event.preventDefault(); renderSite(formData()); toast('Website draft ready. Review the details, then download the HTML.'); });
   $('#saveProject').addEventListener('click', () => {
     const form = $('#clientBrief'); if (!form.reportValidity()) return;

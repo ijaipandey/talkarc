@@ -1,70 +1,11 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>talkarc - Chatbots for local business</title>
-<meta name="description" content="Websites and FAQ chat assistants for local businesses, built on answers you approve.">
-<meta property="og:title" content="talkarc - Chatbots for local business"><meta property="og:description" content="Websites and FAQ chat assistants built on answers you approve."><meta property="og:image" content="https://ijaipandey.github.io/talkarc/og.png">
-<link rel="icon" href="favicon.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="style.css"><script src="config.js"></script>
-</head><body>
-<nav><a class="brand" href="#top"><img src="favicon.png" alt=""><span data-brand>talkarc</span></a>
-<div class="links"><a href="#how">How it works</a><a href="#demo">Demo</a><a href="#pricing">Pricing</a><a class="pill" href="#contact">Get started</a></div></nav>
-<section class="hero" id="top"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="wrap">
-<img class="mark" src="icon.png" alt="">
-<h1>Your customers ask.<br><span class="grad">Your website answers.</span></h1>
-<p class="sub">Websites and FAQ chat assistants for local businesses, built on answers you approve.</p>
-<div class="cta"><a class="pill" href="#pricing">See pricing</a><a class="pill ghost" href="#demo">Try the demo</a></div>
-<div class="float f1">What are your timings?</div><div class="float f2">Open 10 AM to 8 PM</div><div class="float f3">Where are you located?</div>
-</div></section>
-<section class="alt" id="how"><div class="wrap fade">
-<h2>Simple. From start to live.</h2>
-<div class="cards">
-<div class="card"><div class="num">01</div><h3>You share the answers</h3><p>Timings, services, prices, location. The questions customers ask again and again.</p></div>
-<div class="card"><div class="num">02</div><h3>We build it</h3><p>A clean website and a chat assistant that replies using only the answers you gave.</p></div>
-<div class="card"><div class="num">03</div><h3>You approve, then it goes live</h3><p>You see everything first. Nothing is published until you say yes.</p></div>
-</div></div></section>
-<section id="demo"><div class="wrap fade">
-<h2>Ask it anything.</h2>
-<p class="sub">A sample chat for an imaginary dental clinic. Tap a question.</p>
-<div class="chat"><div class="hd"><img src="favicon.png" alt=""><span>Sample Dental Clinic</span><small>Demo</small></div>
-<div class="msgs" id="msgs"><div class="m b">Hi! Ask me about timings, services or location.</div></div>
-<div class="qs" id="qs"></div></div>
-<p class="note">This is a made-up example to show how it feels. Not a real clinic or customer.</p>
-</div></section>
-<section class="dark" id="pricing"><div class="wrap fade">
-<h2>Simple pricing.</h2>
-<p class="sub">Have a coupon? Enter it to unlock your price*.</p>
-<div class="price glass"><div class="tag">Standard price</div><div class="was" id="was">&#8377;799</div>
-<div class="now" id="now">&#8377;799</div>
-<div class="badge" id="pbadge" hidden>Free hosting for the first 10 customers*</div>
-<form id="cform" class="coupon"><input id="ccode" placeholder="Coupon code" autocomplete="off" autocapitalize="characters" aria-label="Coupon code"><button class="pill" type="submit">Apply</button></form>
-<p class="cmsg" id="cmsg"></p></div>
-<p class="note" id="terms"></p>
-</div></section>
-<section id="contact"><div class="wrap fade">
-<h2>Let's set one up for you.</h2>
-<p class="sub">Tell us about your business and we will show you what it could look like.</p>
-<div class="cta"><a class="pill" id="cta" href="#contact">Get in touch</a></div>
-<p class="note" id="cnote"></p>
-</div></section>
-<footer>© <span id="yr"></span> <span data-brand>talkarc</span> · <span id="tag"></span></footer>
-<script>
-const S=window.SITE;document.title=S.name+" - "+S.tagline;
-document.querySelectorAll("[data-brand]").forEach(e=>e.textContent=S.name);
-document.getElementById("tag").textContent=S.tagline;document.getElementById("yr").textContent=new Date().getFullYear();
-const c=document.getElementById("cta");
-if(S.contactHref){c.href=S.contactHref;c.textContent=S.contactLabel||"Get in touch";c.target="_blank";c.rel="noopener"}else{c.style.display="none";document.getElementById("cnote").textContent="Contact details coming soon."}
-const QA=[["What are your timings?","We are open Monday to Saturday, 10 AM to 8 PM. Closed on Sundays."],["What services do you offer?","Check-ups, cleaning, fillings and root canal treatment."],["Where are you located?","Sample address, Navi Mumbai. Parking is available nearby."],["How do I book?","Call the clinic and we will fix a slot for you."]];
-const m=document.getElementById("msgs"),q=document.getElementById("qs");
-QA.forEach(([a,b])=>{const x=document.createElement("button");x.textContent=a;x.onclick=()=>{add(a,"u");setTimeout(()=>add(b,"b"),450)};q.appendChild(x)});
-function add(t,k){const d=document.createElement("div");d.className="m "+k;d.textContent=t;m.appendChild(d)}
-const money=n=>"\u20B9"+n;
-document.getElementById("terms").textContent=S.terms;
-document.getElementById("was").textContent=money(S.price);document.getElementById("now").textContent=money(S.price);
-document.getElementById("cform").addEventListener("submit",e=>{e.preventDefault();
-const v=document.getElementById("ccode").value.trim().toUpperCase(),msg=document.getElementById("cmsg"),card=document.querySelector(".price");
-if(v&&v===S.coupon.toUpperCase()){card.classList.add("applied");document.getElementById("now").textContent=money(S.offerPrice);document.getElementById("pbadge").hidden=false;document.getElementById("was").style.display="block";msg.textContent="Coupon applied.";msg.className="cmsg ok"}
-else{msg.textContent="That code does not look right.";msg.className="cmsg bad"}});
-const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("show")),{threshold:.15});
-document.querySelectorAll(".fade").forEach(e=>io.observe(e));
-</script></body></html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Talkarc — Websites and chatbots for local business</title><meta name="description" content="Simple websites and helpful chatbots for local businesses. Explore the Talkarc ₹499 plan and start a project brief."><link rel="icon" href="assets/talkarc-logo.png" type="image/png"><link rel="stylesheet" href="assets/creative.css"><link rel="stylesheet" href="assets/agency.css"><link rel="stylesheet" href="assets/talkarc.css"><link rel="stylesheet" href="assets/talkarc-3d.css"></head>
+<body class="agency-site talkarc-site"><div class="agency-preview-note"><strong>Talkarc</strong><span> Websites and chatbots for local business</span></div>
+<header class="agency-nav"><a class="talkarc-brand" href="/"><span class="talkarc-icon" aria-hidden="true"></span><span>talk<span>arc</span></span></a><nav><a href="#services">Services</a><a href="#how">How it works</a><a href="#plan">₹499 plan</a><a class="agency-nav-cta" href="agency.html">Build a project brief <span>→</span></a></nav></header>
+<main><section class="agency-hero talkarc-hero"><div class="agency-hero-copy" data-reveal><p class="eyebrow">A SIMPLE DIGITAL START FOR YOUR BUSINESS</p><h1>Give your local business a <span>better online hello.</span></h1><p class="agency-lead">A clear website and a helpful chatbot, shaped around the questions your customers ask every day.</p><div class="agency-actions"><a class="button-primary" href="agency.html">Plan your website <span>→</span></a><a class="button-quiet" href="#plan">See the ₹499 plan</a></div><p class="agency-honesty">Built for local businesses. Designed to make the next step clear.</p></div><div class="talkarc-hero-art" data-tilt-stage><span class="depth-disc disc-one" aria-hidden="true"></span><span class="depth-disc disc-two" aria-hidden="true"></span><span class="depth-ring" aria-hidden="true"></span><div class="hero-business-card" data-tilt><div class="hero-card-head"><span class="mini-brand">talk<span>arc</span></span><span class="hero-menu">Services　 About　 Contact</span><button>Get in touch</button></div><span class="hero-card-kicker">A GOOD DAY STARTS HERE</span><h2>Made for your<br>neighbourhood.</h2><p>A fresh place to find what you need, learn what we do, and reach our team.</p><a>Explore services　→</a><div class="sample-chat"><div class="chat-avatar">t</div><div><small>Talkarc assistant</small><p>Hi! What would you like to know?</p></div></div><span class="hero-card-caption">WEBSITE + HELPFUL CHATBOT</span></div><div class="talkarc-full-lockup" data-tilt><img src="assets/talkarc-logo.png" alt="Talkarc — chatbots for local business"></div><div class="floating-reply" aria-hidden="true"><span class="reply-glow"></span><b>Helpful, quick replies</b><small>Answers from your business info</small></div><div class="hero-depth-label" aria-hidden="true">WEBSITE <span>+</span> CHATBOT</div></div></section>
+<section class="agency-proof talkarc-categories"><span>MADE FOR EVERYDAY LOCAL BUSINESS</span><div><b>Clinics</b><b>Salons</b><b>Cafés</b><b>Shops</b><b>Home services</b></div></section>
+<section class="agency-services" id="services"><div class="agency-section-head" data-reveal><p class="eyebrow">ONE SIMPLE ONLINE PRESENCE</p><h2>Your website and chatbot, working together.</h2><p>Give people the basics they need, then help them take the next step.</p></div><div class="agency-service-grid talkarc-service-grid"><article data-reveal><span class="service-number">01 · WEBSITE</span><h3>A clear home for your business</h3><p>Show your services, location, contact details, and what makes you worth choosing.</p></article><article data-reveal><span class="service-number">02 · CHATBOT</span><h3>Quick answers to common questions</h3><p>Help visitors find information about your services and how to reach you.</p></article><article data-reveal><span class="service-number">03 · SETUP</span><h3>Help getting the details in place</h3><p>We work with you to shape the content and prepare your online presence.</p></article></div></section>
+<section class="agency-process talkarc-process" id="how"><div data-reveal><p class="eyebrow">FROM FIRST BRIEF TO FIRST DRAFT</p><h2>Start simple.<br>Make it yours.</h2><p>We gather the right details, shape a website direction, and review it with you before launch.</p><a class="button-primary" href="agency.html">Start a project brief <span>→</span></a></div><ol><li data-reveal><span>01</span><div><b>Tell us about your business</b><small>Services, customers, location, and the best way to get in touch.</small></div></li><li data-reveal><span>02</span><div><b>Review your website draft</b><small>Check your words, look, and chatbot answers together.</small></div></li><li data-reveal><span>03</span><div><b>Agree the scope before launch</b><small>We confirm usage, support, and launch details with you first.</small></div></li></ol></section>
+<section class="talkarc-plan" id="plan"><div data-reveal><p class="eyebrow">A STRAIGHTFORWARD START</p><h2>The Talkarc ₹499 plan</h2><p>A website plus chatbot for a simple start to your local business’s online presence.</p><a class="button-primary" href="agency.html">Plan your project <span>→</span></a></div><div class="plan-card" data-reveal><span class="plan-label">TALKARC PLAN</span><strong>₹499</strong><span class="plan-desc">Website + chatbot</span><ul><li>Business website draft</li><li>Chatbot setup for common questions</li><li>Scope agreed before work begins</li></ul><small>Usage limits and support terms are still being defined. We’ll confirm them with you before onboarding. Price frequency and final inclusions should be agreed before purchase.</small></div></section>
+<section class="talkarc-about" data-reveal><div class="talkarc-logo-large"><img src="assets/talkarc-logo.png" alt="Talkarc — chatbots for local business"></div><div><p class="eyebrow">TALKARC</p><h2>Helpful digital tools for the places we call our own.</h2><p>Talkarc is an early-stage project building websites and chatbots for local businesses. We’ll be clear about what’s ready and what’s still being worked out.</p><a href="agency.html">Prepare a project brief →</a></div></section>
+</main><footer class="agency-footer talkarc-footer"><a class="talkarc-brand" href="/"><span class="talkarc-icon" aria-hidden="true"></span><span>talk<span>arc</span></span></a><span>Chatbots and websites for local business.</span><a href="agency.html">Open the project desk →</a></footer><script src="assets/talkarc-3d.js"></script></body></html>
